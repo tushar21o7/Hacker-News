@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 
 const newsSchema = mongoose.Schema(
   {
+    id: {
+      type: String,
+    },
     url: {
       type: String,
     },
@@ -23,6 +26,14 @@ const newsSchema = mongoose.Schema(
     commentsCount: {
       type: Number,
       default: 0,
+    },
+    deletedBy: {
+      type: Array,
+      default: [],
+    },
+    markedAsReadBy: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: true }

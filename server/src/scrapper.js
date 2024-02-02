@@ -19,7 +19,9 @@ export const scrapeAndAddToDB = async () => {
       for (let i = 0; i < selTool1.length; i++) {
         const url = $(selTool1[i]).find(".sitestr").text();
         const newsUrl = $(selTool1[i]).find(".titleline a").attr("href");
-        const newsText = $(selTool1[i]).find(".titleline a").text();
+        const newsText = $(selTool1[i])
+          .find(".titleline > :first-child")
+          .text();
         const postedOn = $(selTool2[i]).find(".age").attr("title");
         const upvotes = $(selTool2[i]).find(".score").text();
         const comments = $(selTool2[i]).find(".subline > :last-child").text();
@@ -30,6 +32,7 @@ export const scrapeAndAddToDB = async () => {
           parseInt(Number(comments.replace(/[^0-9.-]+/g, ""))) || 0;
 
         const newsField = {
+          id: i,
           url,
           newsUrl,
           newsText,
@@ -47,7 +50,7 @@ export const scrapeAndAddToDB = async () => {
         );
 
         if (updateIfPresent) continue;
-        const news = await News.create(newsField);
+        await News.create(newsField);
       }
     } catch (error) {
       console.log(error);
