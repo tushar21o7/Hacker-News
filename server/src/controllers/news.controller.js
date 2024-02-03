@@ -75,7 +75,11 @@ const toggleReadStatus = async (req, res) => {
     );
   }
 
-  const newsArray = await News.find({}).select("-deletedBy");
+  console.log(newsField);
+
+  const newsArray = await News.find({ deletedBy: { $nin: userId } }).select(
+    "-deletedBy"
+  );
 
   res.status(200).json(new ApiResponse(200, newsArray, "Toggled read status"));
 };

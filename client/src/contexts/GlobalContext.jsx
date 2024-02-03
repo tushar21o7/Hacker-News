@@ -30,16 +30,22 @@ const User = ({ children }) => {
   const fetchNewsArray = useCallback(async () => {
     try {
       const token = sessionStorage.getItem("accessToken");
-      const body = { isLoggedIn };
-      const { data } = await axios("http://localhost:3000/api/v1/news", body, {
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      });
+      let resp;
+      if (isLoggedIn) {
+        resp = await axios("http://localhost:3000/api/v1/news", {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+      } else {
+        resp = await axios("http://localhost:3000/api/v1/news");
+      }
 
-      const newNewsArray = updateNewsArray(data.data);
+      const { data } = resp.data;
+
+      const newNewsArray = updateNewsArray(data);
       setNewsArray(newNewsArray);
     } catch (error) {
       console.log(error);
