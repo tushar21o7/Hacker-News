@@ -10,7 +10,7 @@ const Home = () => {
       const token = sessionStorage.getItem("accessToken");
       const body = { readStatus: !readStatus };
       const { data } = await axios.post(
-        `http://localhost:3000/api/v1/news/${id}`,
+        `https://hacker-news-8q32.onrender.com/api/v1/news/${id}`,
         body,
         {
           headers: {
@@ -33,7 +33,7 @@ const Home = () => {
       const token = sessionStorage.getItem("accessToken");
       const body = { readStatus };
       const { data } = await axios.patch(
-        `http://localhost:3000/api/v1/news/${id}`,
+        `https://hacker-news-8q32.onrender.com/api/v1/news/${id}`,
         body,
         {
           headers: {

@@ -32,15 +32,18 @@ const User = ({ children }) => {
       const token = sessionStorage.getItem("accessToken");
       let resp;
       if (isLoggedIn) {
-        resp = await axios("http://localhost:3000/api/v1/news", {
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+        resp = await axios(
+          "https://hacker-news-8q32.onrender.com/api/v1/news",
+          {
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
+          }
+        );
       } else {
-        resp = await axios("http://localhost:3000/api/v1/news");
+        resp = await axios("https://hacker-news-8q32.onrender.com/api/v1/news");
       }
 
       const { data } = resp.data;
