@@ -1,6 +1,11 @@
 <h1> Hacker News Clone </h1>
 This is a Hacker News clone built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides users with a familiar interface to view and interact with top news articles in reverse chronological order. The website also allows users to mark articles as read or delete them from their dashboard.
 
+# Deployed URL
+https://glittery-bavarois-0821b6.netlify.app
+
+server: https://hacker-news-8q32.onrender.com
+
 # Tech Stack
 
 * MongoDB
