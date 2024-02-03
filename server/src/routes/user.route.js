@@ -10,12 +10,12 @@ import {
 router
   .route("/register")
   .post(registerUser)
-  .get((res) => res.send("register"));
+  .get((req, res) => res.send("register"));
 
 router
   .route("/login")
   .post(loginUser)
-  .get((res) => res.send("login"));
+  .get((req, res) => res.send("login"));
 
 router.route("/logout").all(logoutUser);
 
