@@ -16,7 +16,7 @@ const Register = () => {
 
     try {
       const resp = await axios.post(
-        "http://localhost:3000/api/v1/users/register",
+        "https://hacker-news-8q32.onrender.com/api/v1/users/register",
         data
       );
       console.log(resp.data);
